@@ -1,0 +1,6 @@
+-cp src
+
+todotxt.Todo
+todotxt.Task
+
+--interp

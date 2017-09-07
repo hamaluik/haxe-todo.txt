@@ -1,0 +1,12 @@
+{
+  "name": "todo.txt",
+  "url" : "https://github.com/FuzzyWuzzie/haxe-todo.txt",
+  "license": "Apache",
+  "classPath": "src",
+  "tags": ["cross", "utility"],
+  "description": "Native Haxe utility for reading and writing todo.txt format todo lists.",
+  "version": "0.1.0",
+  "releasenote": "Initial commit, only reading so far.",
+  "contributors": ["FuzzyWuzzie"],
+  "dependencies": {}
+}
