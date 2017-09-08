@@ -1,5 +1,8 @@
 package todotxt;
 
+import haxe.Serializer;
+import haxe.Unserializer;
+
 using StringTools;
 
 class Task {
@@ -23,6 +26,11 @@ class Task {
     }
 
     public function parse(line:String):Void {
+        completed = false;
+        priority = null;
+        startedOn = null;
+        completedOn = null;
+        description = "";
         projects = new Array<String>();
         contexts = new Array<String>();
 
@@ -60,5 +68,35 @@ class Task {
             contexts.push(r.matched(1));
             return r.matched(0);
         });
+    }
+
+    public function render():String {
+        var ret:String = "";
+
+        if(completed) ret += "x ";
+        if(priority != null) ret += '($priority) ';
+        if(completedOn != null) {
+            if(startedOn == null) startedOn = completedOn;
+            ret += DateTools.format(completedOn, '%Y-%m-%d') + ' ';
+        }
+        if(startedOn != null) ret += DateTools.format(startedOn, '%Y-%m-%d') + ' ';
+        ret += description;
+
+        return ret.trim();
+    }
+
+    public function toString():String {
+        return render();
+    }
+
+    @:keep
+    function hxSerialize(s:Serializer) {
+        s.serialize(render());
+    }
+
+    @:keep
+    function hxUnserialize(u:Unserializer) {
+        var line:String = u.unserialize();
+        parse(line);
     }
 }

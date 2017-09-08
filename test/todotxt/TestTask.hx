@@ -1,5 +1,8 @@
 package todotxt;
 
+import haxe.Serializer;
+import haxe.Unserializer;
+
 import buddy.*;
 using buddy.Should;
 
@@ -75,6 +78,26 @@ class TestTask extends BuddySuite {
 				taskA.contexts.length.should.be(2);
 				taskA.contexts[0].should.be('iphone');
 				taskA.contexts[1].should.be('phone');
+			});
+
+			it('should render back properly', {
+				var taskA:Task = new Task('x 2011-03-02 2011-03-01 Review Tim\'s pull request +TodoTxtTouch @github');
+				taskA.render().should.be('x 2011-03-02 2011-03-01 Review Tim\'s pull request +TodoTxtTouch @github');
+
+				var taskB:Task = new Task('(A) Call Mom +Family +PeaceLoveAndHappiness @iphone @phone');
+				taskB.render().should.be('(A) Call Mom +Family +PeaceLoveAndHappiness @iphone @phone');
+			});
+
+			it('should serialize and unserialize back', {
+				var taskA:Task = new Task('x 2011-03-02 2011-03-01 Review Tim\'s pull request +TodoTxtTouch @github');
+
+				var s:Dynamic = Serializer.run(taskA);
+				var u:Task = Unserializer.run(s);
+
+				u.completed.should.be(true);
+				u.completedOn.toString().should.be('2011-03-02 00:00:00');
+				u.startedOn.toString().should.be('2011-03-01 00:00:00');
+				u.description.should.be('Review Tim\'s pull request +TodoTxtTouch @github');
 			});
 		});
 	}
