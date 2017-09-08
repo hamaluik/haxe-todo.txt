@@ -17,7 +17,7 @@ API documentation is available here: http://fuzzywuzzie.github.io/haxe-todo.txt/
 
 #### Update a TODO list:
 
-```
+```haxe
 import todotxt.Todo;
 
 class Main() {

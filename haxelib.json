@@ -5,7 +5,7 @@
   "classPath": "src",
   "tags": ["cross", "utility"],
   "description": "Native Haxe utility for reading and writing todo.txt format TODO lists.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "releasenote": "Basic reading and writing of todo.txt TODO lists!",
   "contributors": ["FuzzyWuzzie"],
   "dependencies": {}

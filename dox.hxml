@@ -9,4 +9,4 @@ todotxt.Task
 -xml bin/haxe.xml
 
 --next
--cmd haxelib run dox -i bin -o docs --title "todo.txt" --toplevel-package "todotxt" -D version "1.0.0" -D source-path "https://github.com/FuzzyWuzzie/haxe-todo.txt/tree/master/src"
+-cmd haxelib run dox -i bin -o docs --title "todo.txt" --toplevel-package "todotxt" -D version "1.0.1" -D source-path "https://github.com/FuzzyWuzzie/haxe-todo.txt/tree/master/src"
